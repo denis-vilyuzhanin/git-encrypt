@@ -7,15 +7,30 @@ by people much smarter than me, gitcrypt would not exist.
 > There is [some controversy][4] over using this technique, so do your research
 and understand the implications of using this tool before you go crazy with it.
 
+## Features
+
+**Not Verified on Windows**
+
+Now you can encrypt/decrypt and recrypt(change passphrase) all history
+
+	$ gitcrypt crypthistory
+	$ gitcrypt decrypthistory
+	$ gitcrypt recrypt
+
+
 ## Requirements
 Openssl must be installed and the binary must be available in your $PATH.
 
 ## Installation
 
 ### From a package manager
-Install from npm.
+Install from npm:
 
     npm install -g git-encrypt
+
+Install from Homebrew:
+
+    brew install git-encrypt
 
 ### Manually
 
@@ -100,10 +115,10 @@ passphrase to your git configuration:
 > It is possible to set these options globally using `git config --global`,
 but more secure to create a separate passphrase for every repository.
 
-The default [encryption cipher][5] is `aes-256-ebc`, which should be suitable
+The default [encryption cipher][5] is `aes-256-ecb`, which should be suitable
 for almost everyone. However, it is also possible to use a different cipher:
 
-    $ git config gitcrypt.cipher aes-256-ebc
+    $ git config gitcrypt.cipher aes-256-ecb
 
 > An "ECB" mode is used because it encrypts in a format that provides usable
 text diff, meaning that a single change will not cause the entire file to be
